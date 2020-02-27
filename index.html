@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta http-equiv="refresh" content="600" />
+<style>
+body {
+    background-color: #000000;
+}
+div {
+    text-align:center;
+}
+</style>
+<br><br>
+<div id="clockbox"></div>
+
+<script type="text/javascript">
+var tday=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+var tmonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nmin<=9) nmin="0"+nmin;
+<!-- ## if(nsec<=9) nsec="0"+nsec; -->
+
+var clocktext="<span style=\"font:97pt Arial; color:#ffffff;\">"+nhour+":"+nmin+""+ap+"</span> <br> <span style=\"font:14pt Arial; color:#ccccff;\">"+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+"</span>";
+
+document.getElementById('clockbox').innerHTML=clocktext;
+}
+
+GetClock();
+setInterval(GetClock,1000);
+</script>
+
+
+
+<br>
+<a class="weatherwidget-io" href="https://forecast7.com/en/39d74n104d99/denver/?unit=us" data-label_1="DENVER" data-label_2="WEATHER" data-font="Arial Black" data-icons="Climacons Animated" data-theme="dark" >DENVER WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
